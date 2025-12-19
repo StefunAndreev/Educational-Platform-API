@@ -1,10 +1,7 @@
 from django.db import models
 
-from courses.constants import (
-    MAX_AUTHOR_LENGHT,
-    MAX_TITLE_LENGHT,
-    MAX_LINK_LENGHT,
-)
+from courses.constants import (MAX_AUTHOR_LENGHT, MAX_LINK_LENGHT,
+                               MAX_TITLE_LENGHT)
 
 
 class Course(models.Model):
