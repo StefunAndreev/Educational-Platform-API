@@ -1,20 +1,15 @@
-from rest_framework.permissions import BasePermission, SAFE_METHODS
-from users.models import Subscription
-
-
-def make_payment(request):
-    # TODO
-    pass
+from rest_framework.permissions import SAFE_METHODS, BasePermission
 
 
 class IsStudentOrIsAdmin(BasePermission):
-    def has_permission(self, request, view):
-        # TODO
-        pass
+    """Разрешает оплату только аутентифицированным пользователям."""
 
-    def has_object_permission(self, request, view, obj):
-        # TODO
-        pass
+    def has_permission(self, request, view):
+        if request.method in SAFE_METHODS:
+            return True
+        if view.action == 'pay':
+            return request.user and request.user.is_authenticated
+        return request.user and request.user.is_staff
 
 
 class ReadOnlyOrIsAdmin(BasePermission):
