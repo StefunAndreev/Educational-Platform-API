@@ -4,7 +4,6 @@ import pytest
 from django.test.client import Client
 
 from courses.models import Course, Lesson
-from users.models import Subscription
 
 
 @pytest.fixture
